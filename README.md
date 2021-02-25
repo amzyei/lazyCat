@@ -17,12 +17,12 @@ after compile !!!!!!!!!!!!!!!!!!!!!
 ![screenshots](screenshots/3.png)
 
 # installation 
-
+    $ ./preinstallRequirements.sh
     $ ./install-heimdallr.py
 
 
 # locally run the Heimdallr
-
+    $ ./preinstallRequirements.sh
     $ make
     $ ./heimdallr
 

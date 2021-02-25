@@ -1,0 +1,1 @@
+sudo apt install gcc build-essential libgtk-3-dev libvte-2.91-dev 
