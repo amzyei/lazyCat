@@ -20,8 +20,10 @@ after compile !!!!!!!!!!!!!!!!!!!!!
     $ ./preinstallRequirements.sh
     $ ./install-heimdallr.py
 
+# update
+    $ cd ~/.heimdallr/ ; ./updator
 
-# locally run the Heimdallr
+# exec (local)
     $ ./preinstallRequirements.sh
     $ make
     $ ./heimdallr
