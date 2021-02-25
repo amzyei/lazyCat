@@ -1,13 +1,11 @@
 #!/usr/bin/python3
 from os import system as syscall
+
 from os import getenv
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 
-syscall('sudo apt install gcc')
-syscall('pip install tkintertable')
-syscall('pip install Pillow')
 syscall('mkdir -p ~/.heimdallr/ ; cp -rf . %s/.heimdallr/' % getenv('HOME'))
 
 root = tk.Tk()
