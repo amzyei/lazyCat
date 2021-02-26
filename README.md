@@ -5,8 +5,13 @@ We are focused on its lightness and speed!
 Finally, it can be a permanent terminal for you!
 this terminal witten in C and Gtk framework
 because HEIMDALLR must be a SUPER lightweight.
+
+
 SIZE : 22K :D
+
+
 after compile !!!!!!!!!!!!!!!!!!!!!
+
 
 # screenshots
 
