@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 from os import system as syscall
-syscall('pip3 install Pillow')
 from os import getenv
 import tkinter as tk
 from tkinter import ttk
