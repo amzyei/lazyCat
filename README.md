@@ -21,7 +21,7 @@ after compile !!!!!!!!!!!!!!!!!!!!!
     $ ./install-heimdallr.py
 
 # update
-    $ cd ~/.heimdallr/ ; ./updator
+    $ heimdallr-update
 
 # exec (local)
     $ ./preinstallRequirements.sh

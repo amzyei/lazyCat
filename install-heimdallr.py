@@ -19,12 +19,17 @@ def installer_heimdallr():
     time.sleep(0.4) 
     syscall('make')
     syscall('sudo cp heimdallr /usr/bin/')
+    syscall('sudo cp heimdallr-update /usr/bin/')
     
     progress['value'] = 50
     root.update_idletasks() 
     time.sleep(0.4)
     syscall('sudo cp -rf xdg/heimdallr.desktop /usr/share/applications')
     syscall('cp -rf xdg/heimdallr.desktop ~/.local/share/applications')
+
+    progress['value'] = 70
+    root.update_idletasks() 
+    time.sleep(0.4)
     syscall("sudo cp -rf icon/heimdallr.png /usr/share/icons/hicolor/256x256/apps/")
     syscall("sudo cp -rf icon/heimdallr.png /usr/share/icons/hicolor/256x256/apps/")
     syscall("sudo cp -rf icon/heimdallr.png /usr/share/icons/")
@@ -32,7 +37,6 @@ def installer_heimdallr():
     progress['value'] = 100
     root.update_idletasks() 
     time.sleep(0.4)
-    syscall('clear')
     syscall('zenity --info --title Heimdallr --text "Heimdallr installed !"')
     exit(0)
 

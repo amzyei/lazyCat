@@ -11,7 +11,10 @@ TERMFLAGS=-pthread -I/usr/include/vte-2.91 -I/usr/include/gtk-3.0 -I/usr/include
 
 binary=bin/
 
-all: heimdallr 
+all: heimdallr heimdallr-update
 
 heimdallr: heimdallr-terminal-emu.c
 		${CC} heimdallr-terminal-emu.c ${TERMFLAGS} -o heimdallr
+
+heimdallr-update: updator.c
+		${CC} -o  heimdallr-update updator.c
