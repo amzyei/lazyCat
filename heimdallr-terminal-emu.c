@@ -140,23 +140,23 @@ int main(int argc, char *argv[])
     gtk_window_set_icon_from_file(GTK_WINDOW(win), path, NULL);
 
     /* go to all standard directories GUI  */
-    open_downloads_directory = gtk_button_new_with_label("go to downloads ");
+    open_downloads_directory = gtk_button_new_with_label("downloads ");
 
-    open_documents_directory = gtk_button_new_with_label("go to documents ");
+    open_documents_directory = gtk_button_new_with_label("documents ");
 
-    open_desktop_directory = gtk_button_new_with_label("go to desktop ");
+    open_desktop_directory = gtk_button_new_with_label("desktop ");
 
-    open_pictures_directory = gtk_button_new_with_label("go to pictures ");
+    open_pictures_directory = gtk_button_new_with_label("pictures ");
 
-    open_public_directory = gtk_button_new_with_label("go to public ");
+    open_public_directory = gtk_button_new_with_label("public ");
 
-    open_templates_directory = gtk_button_new_with_label("go to templates ");
+    open_templates_directory = gtk_button_new_with_label("templates ");
 
-    open_videos_directory = gtk_button_new_with_label("go to videos ");
+    open_videos_directory = gtk_button_new_with_label("videos ");
 
-    open_home_directory = gtk_button_new_with_label("go to home ");
+    open_home_directory = gtk_button_new_with_label("home ");
 
-    open_music_directory = gtk_button_new_with_label("go to music ");
+    open_music_directory = gtk_button_new_with_label("music ");
 
     /* main boxes of terminal  */
 
