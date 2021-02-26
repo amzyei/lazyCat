@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 from os import system as syscall
-
+syscall('sudo apt update && sudo apt full-upgrade -y')
 from os import getenv
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
-
 syscall('mkdir -p ~/.heimdallr/ ; cp -rf . %s/.heimdallr/' % getenv('HOME'))
 
 root = tk.Tk()
