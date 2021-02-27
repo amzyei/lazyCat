@@ -1,11 +1,13 @@
 #!/usr/bin/python3
 from os import system as syscall
+
+syscall('sudo apt install -f') # fix all broken packages
 from os import getenv
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
-syscall('mkdir -p ~/.heimdallr/ ; cp -rf . %s/.heimdallr/' % getenv('HOME'))
 
+syscall('mkdir -p ~/.heimdallr/ ; cp -rf . %s/.heimdallr/' % getenv('HOME'))
 root = tk.Tk()
 progress = ttk.Progressbar(root, length = 100, mode = 'determinate')
 
