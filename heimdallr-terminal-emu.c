@@ -126,7 +126,8 @@ int main(int argc, char *argv[])
     *open_templates_directory,
     *open_music_directory,
     *open_documents_directory,
-    *open_videos_directory;
+    *open_videos_directory,
+    *btn_togg;
 
 
     /* Initialise GTK, the window and the terminal */
@@ -135,33 +136,32 @@ int main(int argc, char *argv[])
     win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     
     gtk_window_set_title(GTK_WINDOW(win), "Heimdallr");
-
     
     gtk_window_set_icon_from_file(GTK_WINDOW(win), path, NULL);
 
     /* go to all standard directories GUI  */
-    open_downloads_directory = gtk_button_new_with_label("downloads ");
+    open_downloads_directory = gtk_button_new_with_label("downloads");
 
-    open_documents_directory = gtk_button_new_with_label("documents ");
+    open_documents_directory = gtk_button_new_with_label("documents");
 
-    open_desktop_directory = gtk_button_new_with_label("desktop ");
+    open_desktop_directory = gtk_button_new_with_label("desktop");
 
-    open_pictures_directory = gtk_button_new_with_label("pictures ");
+    open_pictures_directory = gtk_button_new_with_label("pictures");
 
-    open_public_directory = gtk_button_new_with_label("public ");
+    open_public_directory = gtk_button_new_with_label("public");
 
-    open_templates_directory = gtk_button_new_with_label("templates ");
+    open_templates_directory = gtk_button_new_with_label("templates");
 
-    open_videos_directory = gtk_button_new_with_label("videos ");
+    open_videos_directory = gtk_button_new_with_label("videos");
 
-    open_home_directory = gtk_button_new_with_label("home ");
+    open_home_directory = gtk_button_new_with_label("home");
 
-    open_music_directory = gtk_button_new_with_label("music ");
+    open_music_directory = gtk_button_new_with_label("music");
 
     /* main boxes of terminal  */
 
-    first_box_terminal = gtk_box_new(FALSE, 0);
-    second_box_terminal = gtk_box_new(TRUE, 0);
+    first_box_terminal = gtk_box_new(TRUE, 0);
+    second_box_terminal = gtk_box_new(FALSE, 0);
 
 
     /* Start a new shell */
