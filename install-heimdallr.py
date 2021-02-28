@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 from os import system as syscall
-
 syscall('sudo apt install -f') # fix all broken packages
 from os import getenv
 import tkinter as tk
