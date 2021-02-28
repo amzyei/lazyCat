@@ -23,7 +23,7 @@ static void child_ready(VteTerminal *terminal, GPid pid, GError *error, gpointer
 /* go to home */
 static void exec_x_home(GtkWidget *wid, GtkWidget *win){
 
-  char * xhome ="xdg-open ~";
+  const char * xhome ="xdg-open ~";
   system(xhome);
 
 }
@@ -31,7 +31,7 @@ static void exec_x_home(GtkWidget *wid, GtkWidget *win){
 /* go to Downloads */
 static void exec_x_downloads(GtkWidget *wid, GtkWidget *win){
   
-  char * xdownloads ="xdg-open ~/Downloads";
+  const char * xdownloads ="xdg-open ~/Downloads";
   system(xdownloads);
 
 }
@@ -39,7 +39,7 @@ static void exec_x_downloads(GtkWidget *wid, GtkWidget *win){
 /* go to Documents */
 static void exec_x_documents(GtkWidget *wid, GtkWidget *win){
 
-  char * xdocs ="xdg-open ~/Documents";
+  const char * xdocs ="xdg-open ~/Documents";
   system(xdocs);
 
 }
@@ -47,7 +47,7 @@ static void exec_x_documents(GtkWidget *wid, GtkWidget *win){
 /* go to Desktop */
 static void exec_x_desktop(GtkWidget *wid, GtkWidget *win){
 
-  char * xdesktop ="xdg-open ~/Desktop";
+  const char * xdesktop ="xdg-open ~/Desktop";
   system(xdesktop);
 
 }
@@ -55,7 +55,7 @@ static void exec_x_desktop(GtkWidget *wid, GtkWidget *win){
 /* go to Pictures */
 static void exec_x_pictures(GtkWidget *wid, GtkWidget *win){
 
-  char * xpics ="xdg-open ~/Pictures";
+  const char * xpics ="xdg-open ~/Pictures";
   system(xpics);
 
 }
@@ -63,7 +63,7 @@ static void exec_x_pictures(GtkWidget *wid, GtkWidget *win){
 /* go to Vidoes */
 static void exec_x_vd(GtkWidget *wid, GtkWidget *win){
 
-  char * xvd ="xdg-open ~/Videos";
+  const char * xvd ="xdg-open ~/Videos";
   system(xvd);
 
 }
@@ -71,7 +71,7 @@ static void exec_x_vd(GtkWidget *wid, GtkWidget *win){
 /* go to Public */
 static void exec_x_public(GtkWidget *wid, GtkWidget *win){
 
-  char * xpubs ="xdg-open ~/Public";
+  const char * xpubs ="xdg-open ~/Public";
   system(xpubs);
 
 }
@@ -79,7 +79,7 @@ static void exec_x_public(GtkWidget *wid, GtkWidget *win){
 /* go to Templates */
 static void exec_x_templates(GtkWidget *wid, GtkWidget *win){
 
-  char * xtmp ="xdg-open ~/Templates";
+  const char * xtmp ="xdg-open ~/Templates";
   system(xtmp);
 
 }
@@ -87,7 +87,7 @@ static void exec_x_templates(GtkWidget *wid, GtkWidget *win){
 /* go to music */
 static void exec_x_music(GtkWidget *wid, GtkWidget *win){
 
-  char * xmus ="xdg-open ~/Music";
+  const char * xmus ="xdg-open ~/Music";
   system(xmus);
 
 }
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
     
     int home_addr_len = strlen(home_addr);
     int logo_addr_len = strlen(logo_addr);
-    int finally_len = home_addr_len + logo_addr_len;
+    int finally_len = home_addr_len + logo_addr_len+1;
 
     /* icon path  */
 
@@ -134,9 +134,9 @@ int main(int argc, char *argv[])
     /* initialize GTK, the window and the terminal */
     gtk_init(&argc, &argv);
 
-    // terminal instance 
+    // terminal instance and configuration 
     terminal = vte_terminal_new();
-    vte_terminal_set_font_scale(VTE_TERMINAL(terminal), 1.2 );
+    vte_terminal_set_font_scale(VTE_TERMINAL(terminal), 1.5 );
 
     // window instance 
     win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
