@@ -67,7 +67,7 @@ static void open_url_chrome(void){
     const int  len_of_entry = gtk_entry_get_text_length(GTK_ENTRY(url_entry));
     const int finally_length = len_of_entry+len_of_browser+1;
     char *url_merge_with_brw = (char*)malloc(finally_length*sizeof(char));
-    g_print("%s <-> %d \n", entry, len_of_entry);
+    g_print("%s <-> %s \n", entry, browser);
     strcpy(url_merge_with_brw, browser);
     strcat(url_merge_with_brw, entry);
     if( (system(url_merge_with_brw) )!=0){
