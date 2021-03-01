@@ -1,3 +1,23 @@
+/*
+ * HEIMDALLR: 
+ * you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * this is c/gtk terminal emulator
+ * i customize this for heimdallr project and you can run this terminal
+ * this terminal is an simple terminal and easy to use when you run heimdallr.
+ * 
+ * @author(s) : amzy-0 (Mohammad Amin Azimi .K) 
+ */
+
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -6,13 +26,15 @@
 #include<vte/vte.h>
 #include<gtk/gtk.h>
 
-/*
- *
- * this is c/gtk terminal emulator
- * i customize this for heimdallr project and you can run this terminal
- * this terminal is an simple terminal and easy to use when you run heimdallr.
- *
- */
+GtkWidget *win,
+*terminal,
+*first_box_terminal,
+*second_box_terminal,
+*third_box_terminal,
+*url_exec_btn_firefox,
+*url_exec_btn_chrome,
+*url_label,
+*url_entry;
 
 static void child_ready(VteTerminal *terminal, GPid pid, GError *error, gpointer user_data)
 {
@@ -20,78 +42,40 @@ static void child_ready(VteTerminal *terminal, GPid pid, GError *error, gpointer
     if (pid == -1) gtk_main_quit();
 }
 
-/* go to home */
-static void exec_x_home(GtkWidget *wid, GtkWidget *win){
-
-  const char * xhome ="xdg-open ~";
-  system(xhome);
-
-}
-
-/* go to Downloads */
-static void exec_x_downloads(GtkWidget *wid, GtkWidget *win){
-  
-  const char * xdownloads ="xdg-open ~/Downloads";
-  system(xdownloads);
-
-}
-
-/* go to Documents */
-static void exec_x_documents(GtkWidget *wid, GtkWidget *win){
-
-  const char * xdocs ="xdg-open ~/Documents";
-  system(xdocs);
+/* go to goto firefox */
+static void open_url_firefox(void){
+    const gchar *entry = gtk_entry_get_text(GTK_ENTRY(url_entry));
+    const char *browser = "firefox ";
+    const int len_of_browser = strlen(browser); 
+    const int  len_of_entry = gtk_entry_get_text_length(GTK_ENTRY(url_entry)); 
+    const int finally_length = len_of_entry+len_of_browser+1;
+    char *url_merge_with_brw = (char*)malloc(finally_length*sizeof(char)); 
+    g_print("%s <->%s\n", entry, browser);
+    strcpy(url_merge_with_brw, browser);
+    strcat(url_merge_with_brw, entry);
+    if( (system(url_merge_with_brw) )!=0){
+        system("notify-send \"firefox command not found !\"");
+    }
+    free(url_merge_with_brw);
 
 }
-
-/* go to Desktop */
-static void exec_x_desktop(GtkWidget *wid, GtkWidget *win){
-
-  const char * xdesktop ="xdg-open ~/Desktop";
-  system(xdesktop);
-
-}
-
-/* go to Pictures */
-static void exec_x_pictures(GtkWidget *wid, GtkWidget *win){
-
-  const char * xpics ="xdg-open ~/Pictures";
-  system(xpics);
-
-}
-
-/* go to Vidoes */
-static void exec_x_vd(GtkWidget *wid, GtkWidget *win){
-
-  const char * xvd ="xdg-open ~/Videos";
-  system(xvd);
+/* go to goto google chrome */
+static void open_url_chrome(void){
+    const gchar *entry = gtk_entry_get_text(GTK_ENTRY(url_entry));
+    const char *browser = "google-chrome ";
+    const int len_of_browser = strlen(browser);
+    const int  len_of_entry = gtk_entry_get_text_length(GTK_ENTRY(url_entry));
+    const int finally_length = len_of_entry+len_of_browser+1;
+    char *url_merge_with_brw = (char*)malloc(finally_length*sizeof(char));
+    g_print("%s <-> %d \n", entry, len_of_entry);
+    strcpy(url_merge_with_brw, browser);
+    strcat(url_merge_with_brw, entry);
+    if( (system(url_merge_with_brw) )!=0){
+        system("notify-send \"google-chrome command not found !\"");
+    }
+    free(url_merge_with_brw);
 
 }
-
-/* go to Public */
-static void exec_x_public(GtkWidget *wid, GtkWidget *win){
-
-  const char * xpubs ="xdg-open ~/Public";
-  system(xpubs);
-
-}
-
-/* go to Templates */
-static void exec_x_templates(GtkWidget *wid, GtkWidget *win){
-
-  const char * xtmp ="xdg-open ~/Templates";
-  system(xtmp);
-
-}
-
-/* go to music */
-static void exec_x_music(GtkWidget *wid, GtkWidget *win){
-
-  const char * xmus ="xdg-open ~/Music";
-  system(xmus);
-
-}
-
 
 // int main initialization
 
@@ -115,20 +99,6 @@ int main(int argc, char *argv[])
 
     /* create all widget */
 
-    GtkWidget *win,
-    *terminal,
-    *first_box_terminal,
-    *second_box_terminal,
-    *open_home_directory,
-    *open_downloads_directory,
-    *open_desktop_directory,
-    *open_pictures_directory,
-    *open_public_directory,
-    *open_templates_directory,
-    *open_music_directory,
-    *open_documents_directory,
-    *open_videos_directory,
-    *btn_togg;
 
 
     /* initialize GTK, the window and the terminal */
@@ -146,27 +116,19 @@ int main(int argc, char *argv[])
     gtk_window_set_icon_from_file(GTK_WINDOW(win), path, NULL);
 
     /* go to all standard directories GUI  */
-    open_downloads_directory = gtk_button_new_with_label("downloads");
+ 
+    url_exec_btn_firefox = gtk_button_new_with_label("firefox");
+    url_exec_btn_chrome = gtk_button_new_with_label("google chrome");
 
-    open_documents_directory = gtk_button_new_with_label("documents");
 
-    open_desktop_directory = gtk_button_new_with_label("desktop");
+    url_label = gtk_label_new("Enter your URL : ");
 
-    open_pictures_directory = gtk_button_new_with_label("pictures");
-
-    open_public_directory = gtk_button_new_with_label("public");
-
-    open_templates_directory = gtk_button_new_with_label("templates");
-
-    open_videos_directory = gtk_button_new_with_label("videos");
-
-    open_home_directory = gtk_button_new_with_label("home");
-
-    open_music_directory = gtk_button_new_with_label("music");
+    url_entry = gtk_entry_new();
 
     /* main boxes of terminal  */
     first_box_terminal = gtk_box_new(TRUE, 0);
     second_box_terminal = gtk_box_new(FALSE, 0);
+    third_box_terminal = gtk_box_new(TRUE, 0);
 
     /* Start a new shell */
     gchar **envp = g_get_environ();
@@ -192,116 +154,59 @@ int main(int argc, char *argv[])
 
     g_signal_connect(terminal, "child-exited", gtk_main_quit, NULL);
 
-    g_signal_connect(G_OBJECT(open_home_directory),
+    g_signal_connect(G_OBJECT(url_exec_btn_firefox),
                     "clicked",
-                    G_CALLBACK(exec_x_home),
+                    G_CALLBACK(open_url_firefox),
                     (gpointer)win
                   );
+                  
+    g_signal_connect(G_OBJECT(url_exec_btn_chrome),
+                    "clicked",
+                    G_CALLBACK(open_url_chrome),
+                    (gpointer)win
+    );
 
-    g_signal_connect(G_OBJECT(open_downloads_directory),
-                    "clicked",
-                    G_CALLBACK(exec_x_downloads),
-                    (gpointer)win
-                  );
+    /*
+     * add  terminal to the first box (Main Box)
+     */
+    gtk_box_pack_start(GTK_BOX(first_box_terminal), terminal, TRUE, TRUE, 0 );
 
-    g_signal_connect(G_OBJECT(open_documents_directory),
-                    "clicked",
-                    G_CALLBACK(exec_x_documents),
-                    (gpointer)win
-                  );
-
-    g_signal_connect(G_OBJECT(open_desktop_directory),
-                    "clicked",
-                    G_CALLBACK(exec_x_desktop),
-                    (gpointer)win
-                  );
-
-    g_signal_connect(G_OBJECT(open_pictures_directory),
-                    "clicked",
-                    G_CALLBACK(exec_x_pictures),
-                    (gpointer)win
-                  );
-
-    g_signal_connect(G_OBJECT(open_public_directory),
-                    "clicked",
-                    G_CALLBACK(exec_x_public),
-                    (gpointer)win
-                  );
-
-    g_signal_connect(G_OBJECT(open_templates_directory),
-                    "clicked",
-                    G_CALLBACK(exec_x_templates),
-                    (gpointer)win
-                  );
-
-    g_signal_connect(G_OBJECT(open_videos_directory),
-                    "clicked",
-                    G_CALLBACK(exec_x_vd),
-                    (gpointer)win
-                  );
-
-    g_signal_connect(G_OBJECT(open_music_directory),
-                    "clicked",
-                    G_CALLBACK(exec_x_music),
-                    (gpointer)win
-                  );
    /*
     * combine two box (first_box_terminal and second_box_terminal)
     */
 
-    gtk_box_pack_end(GTK_BOX(first_box_terminal), second_box_terminal, FALSE, FALSE, 0 );
+    gtk_box_pack_end(GTK_BOX(first_box_terminal), second_box_terminal, FALSE, FALSE, 0);
+
+   /*
+    * add third box to the first box (Main Box)
+    */
+
+    gtk_box_pack_end(GTK_BOX(first_box_terminal), third_box_terminal, FALSE, FALSE, 0);
+
+
 
     /*
-     * add  terminal frame
+    * url exec button for firefox  (GUI)
+    */
+    gtk_box_pack_end(GTK_BOX(second_box_terminal), url_exec_btn_firefox, TRUE, TRUE, 4);
+
+    /*
+    * url exec button for google chrome  (GUI)
+    */
+    gtk_box_pack_end(GTK_BOX(second_box_terminal), url_exec_btn_chrome, TRUE, TRUE, 4);
+
+
+    ////////////////////////////////third box/////////////////////////////////////////
+    /*
+     * add search label to the third box
      */
-    gtk_box_pack_start(GTK_BOX(first_box_terminal), terminal, TRUE, TRUE, 0 );
-
+    
+      gtk_box_pack_start(GTK_BOX(third_box_terminal), url_label, FALSE, FALSE, 4);
+    
     /*
-     * add btn Desktop directory (GUI)
+     * add search entry to the third box
      */
-    gtk_box_pack_end(GTK_BOX(second_box_terminal), open_desktop_directory, TRUE, FALSE, 4);
-
-    /*
-     * add btn Documents directory (GUI)
-     */
-    gtk_box_pack_end(GTK_BOX(second_box_terminal), open_documents_directory, TRUE, FALSE, 4);
-
-    /*
-    * add btn Downloads directory (GUI)
-    */
-    gtk_box_pack_end(GTK_BOX(second_box_terminal), open_downloads_directory, TRUE, FALSE, 4);
-
-
-    /*
-    * add btn Pictures directory (GUI)
-    */
-    gtk_box_pack_end(GTK_BOX(second_box_terminal), open_pictures_directory, TRUE, FALSE, 4);
-
-    /*
-    * add btn Public directory (GUI)
-    */
-    gtk_box_pack_end(GTK_BOX(second_box_terminal), open_public_directory, TRUE, FALSE, 4);
-
-    /*
-    * add btn Templates directory (GUI)
-    */
-    gtk_box_pack_end(GTK_BOX(second_box_terminal), open_templates_directory, TRUE, FALSE, 4);
-
-    /*
-    * add btn Music directory (GUI)
-    */
-    gtk_box_pack_end(GTK_BOX(second_box_terminal), open_music_directory, TRUE, FALSE, 4);
-
-    /*
-    * add btn Vidoes directory (GUI)
-    */
-    gtk_box_pack_end(GTK_BOX(second_box_terminal), open_videos_directory, TRUE, FALSE, 4);
-
-    /*
-    * add btn HOME directory (GUI)
-    */
-    gtk_box_pack_end(GTK_BOX(second_box_terminal), open_home_directory, TRUE, FALSE, 4);
-
+    gtk_box_pack_start(GTK_BOX(third_box_terminal), url_entry, TRUE, FALSE, 4);
 
     /*
      * maximize heimdallr terminal
@@ -312,13 +217,18 @@ int main(int argc, char *argv[])
      */
 
     gtk_container_add(GTK_CONTAINER(win), first_box_terminal);
+    const char *text_url = gtk_entry_get_text(GTK_ENTRY(url_entry));
+    
 
     /*
      * render all
      */
 
+    // URL entry get text 
+    
+
     free(path);
-  
+
     gtk_widget_show_all(win);
 
     gtk_main();
