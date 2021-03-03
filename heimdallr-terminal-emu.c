@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
 
     // terminal instance and configuration 
     terminal = vte_terminal_new();
-    vte_terminal_set_font_scale(VTE_TERMINAL(terminal), 1.5 );
+    vte_terminal_set_font_scale(VTE_TERMINAL(terminal), 1.3);
 
     // window instance 
     win = gtk_window_new(GTK_WINDOW_TOPLEVEL);
