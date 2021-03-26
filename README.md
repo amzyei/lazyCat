@@ -21,15 +21,25 @@ after compile !!!!!!!!!!!!!!!!!!!!!
 
 ![screenshots](screenshots/3.png)
 
-# installation 
-    $ ./preinstallRequirements.sh
+
+# installation (Debian)
+    $ cd debian
+    $ ./preinstallRequirementsDebian.sh
     $ ./install-heimdallr.py
+
+
+# installation (Fedora)
+    $ cd fedora
+    $ ./preinstallRequirementsFedora.sh
+    $ ./install-heimdallr.py
+
 
 # update
     $ heimdallr-update
 
 # exec (local)
-    $ ./preinstallRequirements.sh
+    $ cd debian OR cd fedora
+    $ ./preinstallRequirements*.sh
     $ make
     $ ./heimdallr
 
