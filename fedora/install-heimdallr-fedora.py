@@ -12,7 +12,7 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 
-syscall('mkdir -p ~/.heimdallr/ ; cp -rf . %s/.heimdallr/' % getenv('HOME'))
+syscall('mkdir -p ~/.heimdallr/ ; cp -rf .. %s/.heimdallr/' % getenv('HOME'))
 root = tk.Tk()
 progress = ttk.Progressbar(root, length = 100, mode = 'determinate')
 
@@ -29,15 +29,15 @@ def installer_heimdallr():
     progress['value'] = 50
     root.update_idletasks() 
     time.sleep(0.4)
-    syscall('sudo cp -rf xdg/heimdallr.desktop /usr/share/applications')
-    syscall('cp -rf xdg/heimdallr.desktop ~/.local/share/applications')
+    syscall('sudo cp -rf ../xdg/heimdallr.desktop /usr/share/applications')
+    syscall('cp -rf ../xdg/heimdallr.desktop ~/.local/share/applications')
 
     progress['value'] = 70
     root.update_idletasks() 
     time.sleep(0.4)
-    syscall("sudo cp -rf icon/heimdallr.png /usr/share/icons/hicolor/256x256/apps/")
-    syscall("sudo cp -rf icon/heimdallr.png /usr/share/icons/hicolor/256x256/apps/")
-    syscall("sudo cp -rf icon/heimdallr.png /usr/share/icons/")
+    syscall("sudo cp -rf ../icon/heimdallr.png /usr/share/icons/hicolor/256x256/apps/")
+    syscall("sudo cp -rf ../icon/heimdallr.png /usr/share/icons/hicolor/256x256/apps/")
+    syscall("sudo cp -rf ../icon/heimdallr.png /usr/share/icons/")
 
     progress['value'] = 100
     root.update_idletasks() 
@@ -45,7 +45,7 @@ def installer_heimdallr():
     syscall('zenity --info --title Heimdallr --text "Heimdallr installed !"')
     exit(0)
 
-img = ImageTk.PhotoImage(Image.open('./icon/heimdallr.png'))
+img = ImageTk.PhotoImage(Image.open('../icon/heimdallr.png'))
 panel = tk.Label(root, image=img)
 
 # installer btn 
