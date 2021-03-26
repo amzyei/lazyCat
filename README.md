@@ -25,13 +25,13 @@ after compile !!!!!!!!!!!!!!!!!!!!!
 # installation (Debian)
     $ cd debian
     $ ./preinstallRequirementsDebian.sh
-    $ ./install-heimdallr.py
+    $ ./install-heimdallr-debian.py
 
 
 # installation (Fedora)
     $ cd fedora
     $ ./preinstallRequirementsFedora.sh
-    $ ./install-heimdallr.py
+    $ ./install-heimdallr-fedora.py
 
 
 # update
@@ -39,7 +39,7 @@ after compile !!!!!!!!!!!!!!!!!!!!!
 
 # exec (local)
     $ cd debian OR cd fedora
-    $ ./preinstallRequirements*.sh
+    $ ./preinstallRequirementsFedora.sh OR ./preinstallRequirementsDebian.sh
     $ make
     $ ./heimdallr
 
