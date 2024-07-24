@@ -1,8 +1,8 @@
 #######################################################
 # preinstall requirements
 # 1. install gcc
-# 2. install gtk (clibs)
-# 3. install vte2.9 (clibs)
+# 2. install gtk 
+# 3. install vte2.9 
 #######################################################
 
 CC=gcc
@@ -14,6 +14,24 @@ all: heimdallr heimdallr-update
 
 heimdallr: ../heimdallr-terminal-emu.c
 		${CC} ../heimdallr-terminal-emu.c ${TERMFLAGS} -o heimdallr
+		strip heimdallr 
 
 heimdallr-update: ../updator.c
 		${CC} -o  heimdallr-update ../updator.c
+		strip heimdallr-update
+
+
+install: heimdallr heimdallr-update
+	mkdir -p ~/.heimdallr/ ; cp -rf .. ~/.heimdallr/
+	sudo apt update && sudo apt full-upgrade -y
+	sudo apt install gcc build-essential libgtk-3-dev libnotify-bin zenity libvte-2.91-dev
+	
+	sudo cp heimdallr /usr/bin/
+	sudo cp heimdallr-update /usr/bin/
+	sudo cp -rf ../xdg/heimdallr.desktop /usr/share/applications
+	cp -rf ../xdg/heimdallr.desktop ~/.local/share/applications
+	sudo cp -rf ../icon/heimdallr.png /usr/share/icons/hicolor/256x256/apps/
+	sudo cp -rf ../icon/heimdallr.png /usr/share/icons/hicolor/256x256/apps/
+	sudo cp -rf ../icon/heimdallr.png /usr/share/icons/
+	zenity --info --title Heimdallr --text "Heimdallr installed !"
+

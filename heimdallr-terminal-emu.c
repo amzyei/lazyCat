@@ -14,7 +14,7 @@
  * i customize this for heimdallr project and you can run this terminal
  * this terminal is an simple terminal and easy to use when you run heimdallr.
  * 
- * @author(s) : amzy-0 (Mohammad Amin Azimi .K) 
+ * @author(s) : amzyei(Mohammad Amin Azimi .K) 
  */
 
 
