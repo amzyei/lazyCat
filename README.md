@@ -1,17 +1,16 @@
-# Heimdallr Terminal Emulator
+# Heimdallr Terminal Emulator (Debian application)
 
 A terminal,
 We are focused on its lightness and speed!
 Finally, it can be a permanent terminal for you!
-this terminal witten in C and Gtk framework
-because HEIMDALLR must be a SUPER lightweight.
+this terminal, written in C and Gtk framework
+because HEIMDALLR must be SUPER lightweight.
 
 
-SIZE : 23KB :D
+SIZE: 19KB :D
 
 
-after compile !!!!!!!!!!!!!!!!!!!!!
-
+after compile!
 
 # screenshots
 
@@ -24,22 +23,11 @@ after compile !!!!!!!!!!!!!!!!!!!!!
 
 # installation (Debian)
     $ cd debian
-    $ ./preinstallRequirementsDebian.sh
-    $ ./install-heimdallr-debian.py
+    $ make install 
 
-
-# installation (Fedora)
-    $ cd fedora
-    $ ./preinstallRequirementsFedora.sh
-    $ ./install-heimdallr-fedora.py
-
-
-# update
-    $ heimdallr-update
 
 # exec (local)
-    $ cd debian OR cd fedora
-    $ ./preinstallRequirementsFedora.sh OR ./preinstallRequirementsDebian.sh
+    $ cd debian
     $ make
     $ ./heimdallr
 
