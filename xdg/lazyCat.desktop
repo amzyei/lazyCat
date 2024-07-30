@@ -10,22 +10,22 @@ Actions=Open;Tray;
 Categories=GTK;GNOME;Utility;
 Comment[en_US]=LazyCat Terminal Emulator
 Comment=LazyCat Terminal Emulator
-Exec=heimdallr
+Exec=lazyCat
 GenericName[en_US]=LazyCat Terminal Emulator
 GenericName=LazyCat Terminal Emulator
-Icon=heimdallr
-Keywords=Terminal;LazyCat;heimdallr;
+Icon=lazyCat
+Keywords=Terminal;LazyCat;lazyCat;
 Name[en_US]=LazyCat Terminal Emulator
 Name=LazyCat Terminal Emulator
 StartupNotify=true
-StartupWMClass=heimdallr
+StartupWMClass=lazyCat
 Terminal=false
 Type=Application
 
 [Desktop Action Open]
-Exec=heimdallr
+Exec=lazyCat
 Name=Start LazyCat Terminal Emulator
 
 [Desktop Action Tray]
-Exec=heimdallr --tray
-Name=Start in System Tray (heimdallr)
+Exec=lazyCat --tray
+Name=Start in System Tray (lazyCat)
