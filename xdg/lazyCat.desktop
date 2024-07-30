@@ -8,15 +8,15 @@ StartupNotify=true
 [Desktop Entry]
 Actions=Open;Tray;
 Categories=GTK;GNOME;Utility;
-Comment[en_US]=Heimdallr Terminal Emulator
-Comment=Heimdallr Terminal Emulator
+Comment[en_US]=LazyCat Terminal Emulator
+Comment=LazyCat Terminal Emulator
 Exec=heimdallr
-GenericName[en_US]=Heimdallr Terminal Emulator
-GenericName=Heimdallr Terminal Emulator
+GenericName[en_US]=LazyCat Terminal Emulator
+GenericName=LazyCat Terminal Emulator
 Icon=heimdallr
-Keywords=Terminal;Heimdallr;heimdallr;
-Name[en_US]=Heimdallr Terminal Emulator
-Name=Heimdallr Terminal Emulator
+Keywords=Terminal;LazyCat;heimdallr;
+Name[en_US]=LazyCat Terminal Emulator
+Name=LazyCat Terminal Emulator
 StartupNotify=true
 StartupWMClass=heimdallr
 Terminal=false
@@ -24,7 +24,7 @@ Type=Application
 
 [Desktop Action Open]
 Exec=heimdallr
-Name=Start Heimdallr Terminal Emulator
+Name=Start LazyCat Terminal Emulator
 
 [Desktop Action Tray]
 Exec=heimdallr --tray

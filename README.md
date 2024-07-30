@@ -1,4 +1,4 @@
-# Heimdallr Terminal Emulator (Debian application)
+# LazyCat Terminal Emulator (Debian application)
 
 A terminal,
 We are focused on its lightness and speed!
@@ -16,10 +16,6 @@ after compile!
 
 ![screenshots](screenshots/1.png)
 
-![screenshots](screenshots/2.png)
-
-![screenshots](screenshots/3.png)
-
 
 # installation (Debian)
     $ cd debian
@@ -29,5 +25,5 @@ after compile!
 # exec (local)
     $ cd debian
     $ make
-    $ ./heimdallr
+    $ ./lazyCat
 
