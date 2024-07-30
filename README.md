@@ -1,14 +1,8 @@
 # LazyCat Terminal Emulator (Debian application)
 
-A terminal,
-We are focused on its lightness and speed!
-Finally, it can be a permanent terminal for you!
-this terminal, written in C and Gtk framework
-because HEIMDALLR must be SUPER lightweight.
-
+This lightweight and fast terminal, written in C and Gtk framework, is designed to be your permanent choice.
 
 SIZE: 19KB :D
-
 
 after compile!
 
@@ -18,12 +12,14 @@ after compile!
 ![screenshots](screenshots/2.png)
 
 
-# installation (Debian)
-    $ cd debian
-    $ make install
+# Remember the following text for system-wide installation on Debian:
+```
+$ cd debian
+$ make install
+```
 
 
-# exec (local)
-    $ cd debian
-    $ make
-    $ ./lazyCat
+# Please remember the following steps for local execution:
+1. Navigate to the "Debian" directory by entering the command: $ cd debian
+2. Build the executable by running the command: $ make
+3. Execute the program by typing: $ ./lazyCat
