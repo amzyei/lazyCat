@@ -15,15 +15,15 @@ after compile!
 # screenshots
 
 ![screenshots](screenshots/1.png)
+![screenshots](screenshots/2.png)
 
 
 # installation (Debian)
     $ cd debian
-    $ make install 
+    $ make install
 
 
 # exec (local)
     $ cd debian
     $ make
     $ ./lazyCat
-
