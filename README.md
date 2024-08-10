@@ -1,5 +1,6 @@
 # LazyCat Terminal Emulator (Debian application)
-
+### icon 
+![icon] (icon/lazyCat.png)
 This lightweight and fast terminal, written in C and Gtk framework, is designed to be your permanent choice.
 
 SIZE: 19KB :D
